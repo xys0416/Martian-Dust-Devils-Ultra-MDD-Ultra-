@@ -1,5 +1,6 @@
 import os, random, cv2
 import numpy as np
+import random
 import matplotlib.pyplot as plt
 import tensorflow as tf
 
@@ -63,6 +64,7 @@ class ReadDataset(object):
                 maskpath = self.maskpath + obj_name
                 image = cv2.imread(img_path)
                 image = cv2.resize(image, self.size)
+                image = image * random.uniform(0.5, 1.5)
                 label = cv2.imread(maskpath)
                 label = cv2.resize(label, self.size)
                 yielddata_image.append(image)
